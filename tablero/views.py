@@ -13,7 +13,8 @@ def tablero_create (request):
             columnas = cd.get('columas')
             filas = cd.get('filas')
 
-    return render (request, 'tablero/tablero_create.html', {})
+
+    return render (request, 'tablero/tablero_create.html', {'form': form})
 
 def index (request):
     return render (request, 'tablero/index.html', {})
