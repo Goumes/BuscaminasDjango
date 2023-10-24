@@ -11,7 +11,7 @@ def tablero_create(request):
             cd = form.cleaned_data
             columnas = cd.get('columnas')
             filas = cd.get('filas')
-            return redirect('tablero_show'+'?columnas='+str(columnas)+'&filas='+str(filas))
+            return redirect('tablero_create'+'?columnas='+str(columnas)+'&filas='+str(filas))
     else:
         if request.method == 'GET' and request.GET.get('columnas', '') and request.GET.get('filas', ''):
             return redirect('tablero_show'+'?columnas='+request.GET.get('columnas', '')+'&filas='+request.GET.get('filas', ''))
