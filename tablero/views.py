@@ -8,10 +8,11 @@ def tablero_create(request):
     if request.method == 'GET' and request.GET:
         form = CrearTablero(request.GET)
         if form.is_valid():
-            columnas = request.GET.get('columnas', '')
-            filas = request.GET.get('filas', '')
+            columnas = form.cleaned_data['columnas']
+            filas = form.cleaned_data['filas']
             # return redirect('/tablero_show'+'?columnas='+str(columnas)+'&filas='+str(filas))
-            return render(request, 'tablero/tablero_show.html', {'columnas': columnas, 'filas': filas})
+            return render(request, 'tablero/tablero_show.html',
+                          {'columnas': columnas, 'filas': filas, 'rango_columnas': range(columnas), 'rango_filas': range(filas)})
     else:
         form = CrearTablero()
 

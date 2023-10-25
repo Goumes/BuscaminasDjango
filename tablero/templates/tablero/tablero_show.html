@@ -10,6 +10,15 @@
 {% block table %}
     <p>Columnas: {{ columnas }}</p>
     <p>Filas: {{ filas }}</p>
+    <table style="border: 1px solid black">
+    {% for fila in rango_filas %}
+        <tr style="height: 50px; border: 1px solid black">
+        {% for columna in rango_columnas %}
+            <td style="width: 50px; border: 1px solid black"></td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
 {% endblock %}
 
 </body>
