@@ -5,13 +5,14 @@ from .forms import CrearTablero
 # Create your views here.
 
 def tablero_create(request):
-    if request.method == 'GET' and request.GET.get('columnas', ''):
+    if request.method == 'GET' and request.GET.get('columnas', '') and request.GET.get('filas', ''):
         form = CrearTablero(request.GET)
         if form.is_valid():
             columnas = request.GET.get('columnas', '')
             filas = request.GET.get('filas', '')
+            # return redirect('/tablero_show'+'?columnas='+str(columnas)+'&filas='+str(filas))
             return render(request, 'tablero/tablero_show.html', {'columnas': columnas, 'filas': filas})
-    elif request.method == 'GET':
+    else:
         form = CrearTablero()
 
     return render(request, 'tablero/tablero_create.html', {'form': form})
