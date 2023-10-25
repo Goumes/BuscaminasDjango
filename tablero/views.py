@@ -5,7 +5,7 @@ from .forms import CrearTablero
 # Create your views here.
 
 def tablero_create(request):
-    if request.method == 'GET' and request.GET.get('columnas', '') and request.GET.get('filas', ''):
+    if request.method == 'GET' and request.GET:
         form = CrearTablero(request.GET)
         if form.is_valid():
             columnas = request.GET.get('columnas', '')
